@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: grafana-dashboard-leonardo-mongodb-inmemory
+ annotations:
+    app.kubernetes.io/managed-by: "Helm"
+ labels:
+   grafana_dashboard: "1"  
+data:
+  grafana-dashboard-leonardo-mongoDBInMemoryDetail.json: |
+    {{ tpl (.Files.Get "conf/grafana-dashboard-leonardo-mongoDBInMemoryDetail.json") . }}

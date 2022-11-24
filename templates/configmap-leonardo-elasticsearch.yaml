@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-leonardo-elasticsearch
+  labels:
+    {{ .Values.global.sidecar.dashboard }}: "1"
+data:
+  grafana-dashboard-elasticsearch.json: |-
+{{ .Files.Get "conf/grafana-dashboard-elasticsearch.json" | indent 4 }}

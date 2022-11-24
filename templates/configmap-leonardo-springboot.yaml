@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-leonardo-springboot
+  labels:
+    {{ .Values.global.sidecar.dashboard }}: "1"
+data:
+  grafana-dashboard-springboot.json: |-
+{{ .Files.Get "conf/grafana-dashboard-springboot.json" | indent 4 }}

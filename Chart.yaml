@@ -1,0 +1,18 @@
+apiVersion: v2
+appVersion: 1.17.0
+dependencies:
+- name: kube-prometheus-stack
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 17.0.2
+- condition: victoria-metrics-single.enabled
+  name: victoria-metrics-single
+  repository: https://victoriametrics.github.io/helm-charts/
+  version: 0.6.18
+- condition: prometheus-pushgateway.enabled
+  name: prometheus-pushgateway
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 1.10.1
+description: Monitoring Prometheus Victoria - Global chart
+name: monitoring-prometheus-victoria
+type: application
+version: 1.0.098

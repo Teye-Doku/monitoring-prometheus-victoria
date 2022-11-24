@@ -1,0 +1,7 @@
+Thank you for installing {{ .Chart.Name }}.
+Version: {{ .Chart.Version }}.
+Build date: Sun Sep 05 17:39:31 CEST 2021
+Build: 98
+Branch: master
+Commit id: b8a0348f298950bad958a75c8182fdaba515cc86
+

@@ -1,0 +1,35 @@
+---
+#service monitor JVM
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    release: prometheus
+  name: jvm-monitoring
+spec:
+  endpoints:
+    - path: /actuator/prometheus
+      port: http
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      monitoring: enable
+      
+---
+#service monitor KONG
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    release: prometheus
+  name: kong-monitoring
+spec:
+  endpoints:
+    - path: /metrics
+      port: kong-admin
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      monitoring: enable    

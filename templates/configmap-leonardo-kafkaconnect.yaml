@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-leonardo-kafkaconnect
+  labels:
+    {{ .Values.global.sidecar.dashboard }}: "1"
+data:
+  grafana-dashboard-kafkaconnect.json: |-
+{{ .Files.Get "conf/grafana-dashboard-kafkaconnect.json" | indent 4 }}

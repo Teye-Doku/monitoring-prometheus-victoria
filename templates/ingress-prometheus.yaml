@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: prometheus-ingress-rule
+  annotations:
+    kubernetes.io/ingress.class: kong
+    konghq.com/strip-path: "false"
+    konghq.com/plugins: admin-access-ip-restriction
+    konghq.com/methods: "GET,POST,UPDATE,DELETE"
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /prometheus
+            backend:
+              serviceName: {{ .Release.Name }}-kube-prometheus-prometheus
+              servicePort: 9090
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: alertmanager-ingress-rule
+  annotations:
+    kubernetes.io/ingress.class: kong
+    konghq.com/strip-path: "true"
+    konghq.com/plugins: admin-access-ip-restriction
+    konghq.com/methods: "GET,POST,UPDATE,DELETE"
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /alertmanager
+            backend:
+              serviceName: {{ .Release.Name }}-kube-prometheus-alertmanager
+              servicePort: 9093

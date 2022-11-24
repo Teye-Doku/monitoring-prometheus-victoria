@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-leonardo-vo-general
+  labels:
+    {{ .Values.global.sidecar.dashboard }}: "1"
+data:
+  grafana-dashboard-vo-general.json: |-
+{{ .Files.Get "conf/grafana-dashboard-vo-general.json" | indent 4 }}

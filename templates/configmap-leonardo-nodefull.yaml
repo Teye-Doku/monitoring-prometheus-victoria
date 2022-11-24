@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-leonardo-nodefull
+  labels:
+    {{ .Values.global.sidecar.dashboard }}: "1"
+data:
+  grafana-dashboard-nodefull.json: |-
+{{ .Files.Get "conf/grafana-dashboard-nodefull.json" | indent 4 }}

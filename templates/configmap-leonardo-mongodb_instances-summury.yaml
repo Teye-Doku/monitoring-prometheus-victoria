@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: configmap-leonardo-mongodb-instances-summury
+ annotations:
+    app.kubernetes.io/managed-by: "Helm"
+ labels:
+   grafana_dashboard: "1"  
+data:
+  grafana-dashboard-leonardo-mongoDBInstanceSummary.json: |
+    {{ tpl (.Files.Get "conf/grafana-dashboard-leonardo-mongoDBInstanceSummary.json") . }}
